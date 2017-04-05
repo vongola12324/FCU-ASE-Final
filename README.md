@@ -8,5 +8,10 @@ Hey guys, write something here :D
 I am  testing M0521622 拜託讓我merge
 
 #alpha
-
 welcome to ASE Final Project 
+
+## Contributors
+- vongola12324
+- Heiseikiseki
+- cheehoe073
+- ChenChihHsuan
