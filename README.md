@@ -18,8 +18,14 @@ ASE Final Project, Feng Chia University
 1. `git clone https://github.com/vongola12324/FCU-ASE-Final`
 2. `cp .env.example .env`
 3. `composer install`
-4. `php artisan migrate`
-5. Modify .env, fill these fields:
+4. Modify .env, fill these fields:
+```
+DB_DATABASE=<DB name>
+DB_USERNAME=<DB account>
+DB_PASSWORD=<DB password>
+```
+5. `php artisan migrate`
+6. Modify .env, fill these fields:
 ```
 MAIL_USERNAME=<mailtrap username>
 MAIL_PASSWORD=<mailtrap password>
