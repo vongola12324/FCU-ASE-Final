@@ -20,9 +20,9 @@ after_success:
 script:
   - vendor/bin/phpunit
 
-notifications:
-  email:
-    recipients:
-      - hackersir-developer@googlegroups.com
-    on_success: change
-    on_failure: always
+#notifications:
+#  email:
+#    recipients:
+#      - hackersir-developer@googlegroups.com
+#    on_success: change
+#    on_failure: always
