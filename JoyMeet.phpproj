@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -175,6 +176,7 @@
     <Compile Include="resources\views\auth\login.blade.php" />
     <Compile Include="resources\views\auth\register.blade.php" />
     <Compile Include="resources\views\auth\resend-confirm-mail.blade.php" />
+    <Compile Include="resources\views\chat-room\index.blade.php" />
     <Compile Include="resources\views\components\footer.blade.php" />
     <Compile Include="resources\views\components\navbar-items.blade.php" />
     <Compile Include="resources\views\components\navbar-subitems.blade.php" />
@@ -310,6 +312,7 @@
     <Folder Include="resources\views\components" />
     <Folder Include="resources\views\errors" />
     <Folder Include="resources\views\layouts" />
+    <Folder Include="resources\views\chat-room\" />
     <Folder Include="resources\views\profile" />
     <Folder Include="resources\views\role" />
     <Folder Include="resources\views\user\datatables" />
