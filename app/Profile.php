@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Event[] $events
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Message[] $messages
- * @property-read \App\User $user
+ * @property-read \App\User|null $user
  * @method static \Illuminate\Database\Query\Builder|\App\Profile whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Profile whereCreatedIp($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Profile whereId($value)
