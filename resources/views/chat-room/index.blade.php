@@ -40,15 +40,22 @@
             <h3 class="text-left">
                 聊天室
             </h3>
-            <p>
-                Lorem ipsum dolor sit amet,
-                <strong>consectetur adipiscing elit</strong>. Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut cursus.
-                <em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em>Proin massa magna, vulputate nec bibendum nec, posuere nec lacus.
-                <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
-            </p>
-            <button type="button" class="btn btn-primary">
-                Default
-            </button>
+            <div class="form-group">
+                <p>
+                    Lorem ipsum dolor sit amet,
+                    <strong>consectetur adipiscing elit</strong>. Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut cursus.
+                    <em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em>Proin massa magna, vulputate nec bibendum nec, posuere nec lacus.
+                    <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
+                </p>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEmail3" placeholder="" />
+                </div>
+                <button type="button" class="btn btn-primary">
+                    Default
+                </button>
+            </div>
         </div>
         <div class="col-md-4">
             <h3>
