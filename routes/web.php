@@ -67,3 +67,6 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::post('resend', 'RegisterController@resendConfirmMail')->name('confirm-mail.resend');
     Route::get('confirm/{confirmCode}', 'RegisterController@emailConfirm')->name('confirm');
 });
+
+// 聊天室
+Route::resource('chat', 'ChannelController');

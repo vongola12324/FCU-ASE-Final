@@ -15,18 +15,18 @@ class CreateEventTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
+            $table->integer('profile_id')->unsigned();
             $table->string('title');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->text('content');
             $table->string('location')->nullable();
-            $table->timestamp('begin_time');
-            $table->timestamp('end_time');
+            $table->timestamp('begin_time')->nullable();
+            $table->timestamp('end_time')->nullable();
             $table->integer('thumbs_up')->unsigned()->default(0);
             $table->string('created_ip');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
     }
 
