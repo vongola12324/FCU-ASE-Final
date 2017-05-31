@@ -6,6 +6,9 @@ addons:
 services:
   - redis-server
 
+cache:
+  directories:
+    - $HOME/.composer/cache/files
 
 php:
   - 5.6
