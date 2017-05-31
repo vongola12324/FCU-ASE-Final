@@ -4,7 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-
 /**
  * App\Event
  *
@@ -45,6 +44,6 @@ class Event extends Model
         'begin_time',
         'end_time',
         'thumbs_up',
-        'created_ip'
+        'created_ip',
     ];
 }

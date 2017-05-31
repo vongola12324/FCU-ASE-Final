@@ -17,7 +17,6 @@ class CreateChannelTable extends Migration
             $table->increments('id');
             $table->string('name');
         });
-
     }
 
     /**
