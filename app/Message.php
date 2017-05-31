@@ -31,14 +31,16 @@ class Message extends Model
         'profile_id',
         'channel_id',
         'content',
-        'created_ip'
+        'created_ip',
     ];
 
-    public function profile() {
+    public function profile()
+    {
         return $this->belongsTo(Profile::class);
     }
 
-    public function channel() {
+    public function channel()
+    {
         return $this->belongsTo(Channel::class);
     }
 }
