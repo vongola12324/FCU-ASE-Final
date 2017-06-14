@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\User;
 use DB;
+use App\User;
+use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
@@ -15,19 +15,17 @@ class MessageController extends Controller
      */
     public function index()
     {
-		$user = auth()->user();
-		
-		// $msg = DB::table('messages')->where('id','=',16)->get();
-		// $msg = DB::table('messages')->get();
+        $user = auth()->user();
 
-		// select users.name,messages.content from users,messages where users.id=messages.profile_id
-		$msg = DB::table('users')
-			->join('messages','users.id','=','messages.profile_id')
-			->get();
-		
-		
-        return view('message.index', compact('user','msg'));
-        
+        // $msg = DB::table('messages')->where('id','=',16)->get();
+        // $msg = DB::table('messages')->get();
+
+        // select users.name,messages.content from users,messages where users.id=messages.profile_id
+        $msg = DB::table('users')
+            ->join('messages', 'users.id', '=', 'messages.profile_id')
+            ->get();
+
+        return view('message.index', compact('user', 'msg'));
     }
 
     /**
@@ -48,20 +46,19 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-		$user = auth()->user();
-		
-		DB::table('messages')->insert(
-			array(
-			'profile_id' => $user->id ,
-			'channel_id' => '1' ,
-			'content' => $request->input('usermsg') ,
-			'created_ip' => $user->last_login_ip
-			)
+        $user = auth()->user();
 
-		);
-		
-		return redirect()->route('message');
-        
+        DB::table('messages')->insert(
+            [
+            'profile_id' => $user->id,
+            'channel_id' => '1',
+            'content'    => $request->input('usermsg'),
+            'created_ip' => $user->last_login_ip,
+            ]
+
+        );
+
+        return redirect()->route('message');
     }
 
     /**
