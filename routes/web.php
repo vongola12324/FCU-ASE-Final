@@ -69,4 +69,14 @@ Route::group(['namespace' => 'Auth'], function () {
 });
 
 // 聊天室
-Route::resource('chat', 'ChannelController');
+Route::resource('chat','ChannelController');
+
+// 聊天
+Route::group(['prefix' => 'message'], function () {
+    // index
+    Route::get('/', 'messageController@index')->name('message');
+    // seng msg
+    Route::get('sendmsg', 'messageController@store')->name('message.sendmsg');
+    Route::put('sendmsg', 'messageController@store')->name('message.sendmsg');
+});
+
