@@ -74,12 +74,12 @@ Route::resource('chat', 'ChannelController');
 // 聊天
 Route::group(['prefix' => 'message'], function () {
     // index
-    Route::get('/', 'messageController@index')->name('message');
+    Route::get('/', 'MessageController@index')->name('message');
     // seng msg
-    Route::post('sendmsg', 'messageController@store')->name('message.sendmsg');
-    Route::put('sendmsg', 'messageController@store')->name('message.sendmsg');
-    Route::get('chat/{id}', 'messageController@showChatroom')->name('message.chat');
-    Route::put('chat', 'messageController@showChatroom')->name('message.chat');
-    Route::get('createChannel', 'messageController@createChannel')->name('message.createChannel');
-    Route::put('createChannel', 'messageController@createChannel')->name('message.createChannel');
+    Route::post('sendmsg', 'MessageController@store')->name('message.sendmsg');
+    Route::put('sendmsg', 'MessageController@store')->name('message.sendmsg');
+    Route::get('chat/{id}', 'MessageController@showChatroom')->name('message.chat');
+    Route::put('chat', 'MessageController@showChatroom')->name('message.chat');
+    Route::get('createChannel', 'MessageController@createChannel')->name('message.createChannel');
+    Route::put('createChannel', 'MessageController@createChannel')->name('message.createChannel');
 });
