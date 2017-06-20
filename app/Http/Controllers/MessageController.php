@@ -29,6 +29,7 @@ class MessageController extends Controller
     public function showChatroom($channel_id)
     {
         $user = auth()->user();
+        $profile = $user->profile;
         $msg = Message::with('profile')->where('channel_id', '=', $channel_id)
             ->get()->sortBy('created_at');
 
