@@ -66,15 +66,14 @@ a {
 @section('content')
 <div id="wrapper">
     <div id="menu">
-        <p class="welcome">Welcome, {{ $user->name }}<b></b></p>
+        <p class="welcome">Welcome, {{ $profile->name }}<b></b></p>
         <p class="logout"><a id="exit" href="#">Exit Chat</a></p>
         <div style="clear:both"></div>
     </div>
      
     <div id="chatbox">
-	    <!-- {{ $msg	}} -->
-		@foreach ($msg as $msg)
-			<p>{{ $msg->name }} : {{$msg->content}}</p>
+		@foreach ($msg as $m)
+			<p>{{ $m->profile->name }} : {{$m->content}}</p>
 		@endforeach
 		
     </div>

@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Message;
-use DB;
-use App\User;
+use App\Profile;
 use Illuminate\Http\Request;
-use App\User;
-use DB;
 
 class MessageController extends Controller
 {
@@ -18,17 +15,15 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
+        $profile = auth()->user()->profile;
 
         // $msg = DB::table('messages')->where('id','=',16)->get();
         // $msg = DB::table('messages')->get();
 
         // select users.name,messages.content from users,messages where users.id=messages.profile_id
-        $msg = DB::table('users')
-            ->join('messages', 'users.id', '=', 'messages.profile_id')
-            ->get();
+        $msg = Message::with('profile')->get()->sortBy('created_at');
 
-        return view('message.index', compact('user', 'msg'));
+        return view('message.index', compact('profile', 'msg'));
 
     }
 
