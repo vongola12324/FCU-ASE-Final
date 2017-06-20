@@ -23,7 +23,7 @@ class MessageController extends Controller
             $profile = Session::get('profile');
         } else {
             $profile = Profile::create([
-                'name'       => '路人-'.substr(hash('sha1', time()), 0, 5),
+                'name'       => '路人-' . substr(hash('sha1', time()), 0, 5),
                 'created_ip' => request()->ip(),
             ]);
         }
