@@ -67,7 +67,7 @@ class MessageController extends Controller
             'created_ip' => $request->getClientIp(),
         ]);
 
-        return redirect('/message/chat/'.$request->input('channel_id'));
+        return redirect('/message/chat/' . $request->input('channel_id'));
     }
 
     /**
