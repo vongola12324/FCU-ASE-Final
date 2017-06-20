@@ -33,7 +33,6 @@ class MessageController extends Controller
             ->get()->sortBy('created_at');
 
         return view('message.chat', compact('user', 'msg', 'channel_id'));
-
     }
 
     /**
@@ -43,7 +42,6 @@ class MessageController extends Controller
      */
     public function createChannel(Request $request)
     {
-
         Channel::create([
             'name' => $request->input('usermsg'),
         ]);

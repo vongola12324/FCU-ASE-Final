@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class UserProfileTest extends TestCase
 {
@@ -13,7 +12,6 @@ class UserProfileTest extends TestCase
     {
         parent::setUp();
         $this->profile = factory(App\Profile::class)->create();
-
     }
 
     public function testUserProfile()
@@ -28,5 +26,4 @@ class UserProfileTest extends TestCase
     {
         $this->get('/user')->seeRouteIs('user.index');
     }
-
 }
