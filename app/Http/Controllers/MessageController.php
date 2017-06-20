@@ -67,13 +67,7 @@ class MessageController extends Controller
             'created_ip' => $request->getClientIp(),
         ]);
 
-        $msg = Message::with('profile')
-            ->where('channel_id', '=', $request->input('channel_id'))
-            ->get()->sortBy('created_at');
-
-        $channel_id = $request->input('channel_id');
-
-        return view('message.chat', compact('profile', 'msg', 'channel_id'));
+        return redirect('/message/chat/'.$request->input('channel_id'));
     }
 
     /**

@@ -111,13 +111,12 @@
 
 @section('js')
     <script>
-        // jQuery Document
         $(document).ready(function () {
-
+            // FIXME: Use WebSocket instead
+            // 30 sec reload
+            setInterval(function () {
+                location.reload();
+            }, 30000);
         });
-
-//        $("#submitmsg").click(function () {
-//            $("#usermsg").val("");
-//        });
     </script>
 @endsection

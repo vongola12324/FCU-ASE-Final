@@ -54,7 +54,7 @@
     <div id="create_channel"  class="text-center">
         <h2>新增頻道：</h2>
         <form name="channel_create" action="{{ route('message.createChannel' )}}">
-            <input name="usermsg" type="text" id="usermsg" size="20"/>
+            <input name="usermsg" type="text" id="usermsg" size="20" required/>
             <input name="submit" type="submit" id="submitmsg" value="送出"/>
         </form>
     </div>
