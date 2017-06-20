@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Message;
-use DB;
-use App\User;
+use App\Profile;
 use Illuminate\Http\Request;
-use App\User;
-use DB;
 
 class MessageController extends Controller
 {
@@ -18,10 +15,11 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
+        $profile = auth()->user()->profile;
 
         $channels = DB::table('channels')->get();
 
+<<<<<<< refs/remotes/origin/dev-chat
         return view('message.index', compact('channels'));
     }
     /**
@@ -43,6 +41,12 @@ class MessageController extends Controller
           ->get();
 
       return view('message.chat', compact('user', 'msg','channel_id'));
+=======
+        // select users.name,messages.content from users,messages where users.id=messages.profile_id
+        $msg = Message::with('profile')->get()->sortBy('created_at');
+
+        return view('message.index', compact('profile', 'msg'));
+>>>>>>> Fix profile and message issue
 
     }
 

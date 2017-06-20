@@ -108,7 +108,7 @@ class RegisterController extends Controller
             'name'      => $request->input("name"),
             'created_ip' => $request->getClientIp(),
         ]);
-        // $profile->user()->associate($user)->save();
+        $profile->user()->associate($user)->save();
 
         // 紀錄註冊時間與IP
         $user->update([

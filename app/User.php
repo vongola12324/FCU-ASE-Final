@@ -89,4 +89,9 @@ class User extends Authenticatable
     {
         return !empty($this->confirm_at);
     }
+
+    public function profile()
+    {
+        return $this->hasOne('\App\Profile');
+    }
 }
