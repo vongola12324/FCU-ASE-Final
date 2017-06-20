@@ -24,7 +24,6 @@ class MessageController extends Controller
         $msg = Message::with('profile')->get()->sortBy('created_at');
 
         return view('message.index', compact('profile', 'msg'));
-
     }
 
     /**

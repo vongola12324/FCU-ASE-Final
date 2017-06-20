@@ -1,14 +1,14 @@
 <html>
 <?php
-$id=$_GET['Id'];
-if(!empty($_POST)){
-$user='root';
-$pass='';
-$db='testdb';
-$conn=new mysqli('localhost',$user,$pass,$db) or die("Unable to connect");
+$id = $_GET['Id'];
+if (!empty($_POST)) {
+    $user = 'root';
+    $pass = '';
+    $db = 'testdb';
+    $conn = new mysqli('localhost', $user, $pass, $db) or die('Unable to connect');
 
-
-echo "$id";}
+    echo "$id";
+}
 /*
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -30,6 +30,6 @@ $conn->close();
 echo "<form method='post' action='process.php?Id=$id'>";
 echo "Title:<input name='title' type='text'><br />";
 echo "Type:<input name='type' type='text'><br />";
-echo "<input type='submit' value='process'>";	
-echo "</form>";?>
+echo "<input type='submit' value='process'>";
+echo '</form>'; ?>
 </html>
