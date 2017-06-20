@@ -10,7 +10,6 @@ class UserProfileTest extends TestCase
     private $profile;
     private $user;
 
-
     public function setUp()
     {
         parent::setUp();
@@ -34,6 +33,6 @@ class UserProfileTest extends TestCase
 
     public function testUserShow()
     {
-        $this->actingAs($this->user)->get('/user/'.$this->user->id)->seeRouteIs('user.show', $this->user->id);
+        $this->actingAs($this->user)->get('/user/' . $this->user->id)->seeRouteIs('user.show', $this->user->id);
     }
 }
