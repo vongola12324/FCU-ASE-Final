@@ -6,6 +6,8 @@ use App\Message;
 use DB;
 use App\User;
 use Illuminate\Http\Request;
+use App\User;
+use DB;
 
 class MessageController extends Controller
 {
@@ -27,6 +29,7 @@ class MessageController extends Controller
             ->get();
 
         return view('message.index', compact('user', 'msg'));
+
     }
 
     /**
