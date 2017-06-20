@@ -27,7 +27,7 @@
         }
 
         #wrapper, #loginform {
-            margin: 35px auto;
+            margin: 35px auto 0;
             padding-bottom: 25px;
             background: #EBF4FB;
             width: 900px;
@@ -101,7 +101,7 @@
         </div>
 
         <form name="message" action="{{ route('message.sendmsg' )}}" method="POST">
-            <input name="usermsg" type="text" id="usermsg" size="63"/>
+            <input name="usermsg" type="text" id="usermsg" size="63" required/>
             <input name="channel_id" type="hidden" id="channel_id" value="{{ $channel_id }}"/>
             <input name="_token" type="hidden" value="{{ csrf_token() }}">
             <input name="submitmsg" type="submit" id="submitmsg" value="Send"/>
@@ -112,6 +112,8 @@
 @section('js')
     <script>
         $(document).ready(function () {
+            const chatbox = $('#chatbox');
+            chatbox.scrollTop(chatbox.prop("scrollHeight"));
             // FIXME: Use WebSocket instead
             // 30 sec reload
             setInterval(function () {
