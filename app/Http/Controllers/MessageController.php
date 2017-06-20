@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Message;
 use DB;
 use App\User;
 use Illuminate\Http\Request;
@@ -71,16 +72,12 @@ class MessageController extends Controller
     public function store(Request $request)
     {
         $user = auth()->user();
-
-        DB::table('messages')->insert(
-            [
-            'profile_id' => $user->id,
+            'profile_id' => $user->profile->id,
             'channel_id' => $request->input('channel_id'),
             'content'    => $request->input('usermsg'),
-            'created_ip' => $user->last_login_ip,
-            ]
+            'created_ip' => $request->getClientIp(),
+        ]);
 
-        );
         $msg = DB::table('users')
             ->join('messages', 'users.id', '=', 'messages.profile_id')
             ->where('channel_id', '=', $request->input('channel_id'))

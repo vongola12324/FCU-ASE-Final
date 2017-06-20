@@ -28,7 +28,8 @@ class Profile extends Model
 {
     protected $fillable = [
         'name',
-        'create_ip',
+        'user_id',
+        'created_ip',
     ];
 
     public function user()
