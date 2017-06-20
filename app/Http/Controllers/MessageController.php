@@ -32,7 +32,7 @@ class MessageController extends Controller
         $msg = Message::with('profile')->where('channel_id', '=', $channel_id)
             ->get()->sortBy('created_at');
 
-        return view('message.chat', compact('user', 'msg', 'channel_id'));
+        return view('message.chat', compact('profile', 'msg', 'channel_id'));
     }
 
     /**
