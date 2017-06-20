@@ -4,20 +4,17 @@
 
 @section('css')
     <style>
-        body {
-            font: 12px arial;
-            color: #222;
-            text-align: center;
-            padding: 35px;
-        }
-
-        form, p, span {
-            margin: 0;
-            padding: 0;
-        }
+        /*form, p, span {*/
+            /*margin: 0;*/
+            /*padding: 0;*/
+        /*}*/
 
         input {
-            font: 12px arial;
+            font-size: 0.5em;
+        }
+
+        form {
+            padding-left: 84px;
         }
 
         a {
@@ -30,7 +27,7 @@
         }
 
         #wrapper, #loginform {
-            margin: 0 auto;
+            margin: 35px auto;
             padding-bottom: 25px;
             background: #EBF4FB;
             width: 900px;
@@ -98,7 +95,6 @@
         </div>
 
         <div id="chatbox">
-        <!-- {{ $msg	}} -->
             @foreach ($msg as $m)
                 <p>{{ $m->name }} : {{$m->content}}</p>
             @endforeach
@@ -109,14 +105,13 @@
             <input name="usermsg" type="text" id="usermsg" size="63"/>
             <input name="channel_id" type="hidden" id="channel_id" value="{{ $channel_id }}"/>
             <input name="submitmsg" type="submit" id="submitmsg" value="Send"/>
-
         </form>
     </div>
 @endsection
 
 @section('js')
-
-    <script type="text/javascript">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js "></script>
+    <script>
         // jQuery Document
         $(document).ready(function () {
 

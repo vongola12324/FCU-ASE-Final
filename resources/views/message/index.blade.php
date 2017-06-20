@@ -29,12 +29,13 @@
             left: 50%;
             margin: -100px 0 0 -200px;
         }
+
+        form, p, span {
+            margin: 0;
+            padding: 0;
+        }
     </style>
 
-    form, p, span {
-    margin: 0;
-    padding: 0;
-    }
 @endsection
 
 @section('content')
