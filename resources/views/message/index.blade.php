@@ -35,12 +35,13 @@
             margin: 0;
             padding: 0;
         }
+@endsection
 
 @section('content')
 
 <div id = btns>
-@foreach ($channels as $channels)
-  <a href="{{ route('message.chat') }}/{{ $channels->id }}" class ="button"> {{ $channels->name }} </a>
+@foreach ($channels as $channel)
+  <a href="{{ route('message.chat') }}/{{ $channel->id }}" class ="button"> {{ $channel->name }} </a>
 @endforeach
 
 </div>
@@ -51,41 +52,4 @@
       <input name="submit" type="submit"  id="submitmsg" value="新增頻道" />
   </form>
 </div>
-@endsection
-
-@section('content')
-    <div id="wrapper">
-        <div id="menu">
-            <p class="welcome">Welcome, {{ $profile->name }}<b></b></p>
-            <p class="logout"><a id="exit" href="#">Exit Chat</a></p>
-            <div style="clear:both"></div>
-        </div>
-
-        <div id="chatbox">
-            @foreach ($msg as $m)
-                <p>{{ $m->profile->name }} : {{$m->content}}</p>
-            @endforeach
-
-        </div>
-
-        <form name="message" action="{{ route('message.sendmsg' )}}" method="POST">
-            <input name="usermsg" type="text" id="usermsg" size="63"/>
-            <input name="submitmsg" type="submit" id="submitmsg" value="Send"/>
-        </form>
-    </div>
-@endsection
-
-@section('js')
-    <script>
-        // jQuery Document
-        $(document).ready(function () {
-
-        });
-
-        $("#submitmsg").click(function () {
-            var clientmsg = $("#usermsg").val();
-            $("#usermsg").attr("value", "");
-            return false;
-        });
-    </script>
 @endsection

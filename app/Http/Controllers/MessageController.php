@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Channel;
 use App\Message;
-use App\Profile;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -16,37 +16,23 @@ class MessageController extends Controller
     public function index()
     {
         $profile = auth()->user()->profile;
+        $channels = Channel::all();
 
-        $channels = DB::table('channels')->get();
-
-<<<<<<< refs/remotes/origin/dev-chat
         return view('message.index', compact('channels'));
     }
+
     /**
      * Show the view for chatroom according to channel number.
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function showChatroom($channel_id)
     {
-      $user = auth()->user();
+        $user = auth()->user();
+        $msg = Message::with('profile')->where('channel_id', '=', $channel_id)
+            ->get()->sortBy('created_at');
 
-      // $msg = DB::table('messages')->where('id','=',16)->get();
-      // $msg = DB::table('messages')->get();
-
-      // select users.name,messages.content from users,messages where users.id=messages.profile_id
-      $msg = DB::table('users')
-          ->join('messages', 'users.id', '=', 'messages.profile_id')
-          ->where('channel_id', '=', $channel_id)
-          ->get();
-
-      return view('message.chat', compact('user', 'msg','channel_id'));
-=======
-        // select users.name,messages.content from users,messages where users.id=messages.profile_id
-        $msg = Message::with('profile')->get()->sortBy('created_at');
-
-        return view('message.index', compact('profile', 'msg'));
->>>>>>> Fix profile and message issue
+        return view('message.chat', compact('user', 'msg', 'channel_id'));
 
     }
 
@@ -58,45 +44,43 @@ class MessageController extends Controller
     public function createChannel(Request $request)
     {
 
-      DB::table('channels')->insert(
-          [
-          'name'    => $request->input('usermsg'),
-          ]
+        Channel::create([
+            'name' => $request->input('usermsg'),
+        ]);
+        $channels = Channel::all();
 
-      );
-      $channels = DB::table('channels')->get();
-
-      return view('message.index', compact('channels'));
+        return view('message.index', compact('channels'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $user = auth()->user();
+        Message::create([
             'profile_id' => $user->profile->id,
             'channel_id' => $request->input('channel_id'),
             'content'    => $request->input('usermsg'),
             'created_ip' => $request->getClientIp(),
         ]);
 
-        $msg = DB::table('users')
-            ->join('messages', 'users.id', '=', 'messages.profile_id')
+        $msg = Message::with('profile')
             ->where('channel_id', '=', $request->input('channel_id'))
-            ->get();
+            ->get()->sortBy('created_at');
+
         $channel_id = $request->input('channel_id');
 
-        return view('message.chat', compact('user', 'msg','channel_id'));
+        return view('message.chat', compact('user', 'msg', 'channel_id'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -107,7 +91,7 @@ class MessageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -118,8 +102,8 @@ class MessageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -130,7 +114,7 @@ class MessageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
