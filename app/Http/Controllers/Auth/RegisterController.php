@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
+use App\Notifications\ConfirmMail;
+use App\Profile;
 use App\Role;
 use App\User;
+use Carbon\Carbon;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Throttle;
 use Validator;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-use App\Notifications\ConfirmMail;
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -101,6 +102,14 @@ class RegisterController extends Controller
         $result = $this->originalRegister($request);
         /* @var User $user */
         $user = auth()->user();
+        // 建立 Profile
+        $profile = Profile::create([
+            'user_id'   => $user->id,
+            'name'      => $request->input("name"),
+            'created_ip' => $request->getClientIp(),
+        ]);
+        // $profile->user()->associate($user)->save();
+
         // 紀錄註冊時間與IP
         $user->update([
             'register_at' => Carbon::now(),
