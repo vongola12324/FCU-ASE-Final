@@ -20,7 +20,7 @@
     {{-- CSS --}}
     {{-- npm的bootstrap還未推出v4 --}}
     {{--<link rel="stylesheet" href="{{ asset('css/app.css') }}">--}}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/alertify.min.css"/>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/bootstrap.min.css"/>
@@ -53,17 +53,15 @@
 @include('components.footer')
 
 {{-- Javascript --}}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
-        integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
         integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
         crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
         crossorigin="anonymous"></script>
 <script src="//cdn.jsdelivr.net/alertifyjs/1.8.0/alertify.min.js"></script>
-<script src="https://use.fontawesome.com/544fc47aab.js"></script>
+<script src="//use.fontawesome.com/544fc47aab.js"></script>
 {{-- DataTables --}}
 <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <script src="//cdn.datatables.net/buttons/1.2.3/js/dataTables.buttons.min.js"></script>

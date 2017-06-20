@@ -96,31 +96,28 @@
 
         <div id="chatbox">
             @foreach ($msg as $m)
-                <p>{{ $m->name }} : {{$m->content}}</p>
+                <p>{{ $m->profile->name }} : {{$m->content}}</p>
             @endforeach
-
         </div>
 
-        <form name="message" action="{{ route('message.sendmsg' )}}">
+        <form name="message" action="{{ route('message.sendmsg' )}}" method="POST">
             <input name="usermsg" type="text" id="usermsg" size="63"/>
             <input name="channel_id" type="hidden" id="channel_id" value="{{ $channel_id }}"/>
+            <input name="_token" type="hidden" value="{{ csrf_token() }}">
             <input name="submitmsg" type="submit" id="submitmsg" value="Send"/>
         </form>
     </div>
 @endsection
 
 @section('js')
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js "></script>
     <script>
         // jQuery Document
         $(document).ready(function () {
 
         });
 
-        $("#submitmsg").click(function () {
-            var clientmsg = $("#usermsg").val();
-            $("#usermsg").attr("value", "");
-            return false;
-        });
+//        $("#submitmsg").click(function () {
+//            $("#usermsg").val("");
+//        });
     </script>
 @endsection

@@ -59,9 +59,9 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        $user = auth()->user();
-        Message::create([
-            'profile_id' => $user->profile->id,
+        $profile = auth()->user()->profile;
+        $m = Message::create([
+            'profile_id' => $profile->id,
             'channel_id' => $request->input('channel_id'),
             'content'    => $request->input('usermsg'),
             'created_ip' => $request->getClientIp(),
@@ -73,7 +73,7 @@ class MessageController extends Controller
 
         $channel_id = $request->input('channel_id');
 
-        return view('message.chat', compact('user', 'msg', 'channel_id'));
+        return view('message.chat', compact('profile', 'msg', 'channel_id'));
     }
 
     /**
