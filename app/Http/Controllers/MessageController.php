@@ -20,6 +20,8 @@ class MessageController extends Controller
         if (auth()->check())
         {
             $profile = auth()->user()->profile;
+        } elseif (Session::has('profile')) {
+            $profile = Session::get('profile');
         } else {
             $profile = Profile::create([
                 'name' => '路人',
