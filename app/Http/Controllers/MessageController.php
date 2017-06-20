@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Channel;
 use App\Message;
 use App\Profile;
 use Illuminate\Http\Request;
-use Session;
 
 class MessageController extends Controller
 {
@@ -17,14 +17,13 @@ class MessageController extends Controller
      */
     public function index()
     {
-        if (auth()->check())
-        {
+        if (auth()->check()) {
             $profile = auth()->user()->profile;
         } elseif (Session::has('profile')) {
             $profile = Session::get('profile');
         } else {
             $profile = Profile::create([
-                'name' => '路人',
+                'name'       => '路人',
                 'created_ip' => request()->ip(),
             ]);
         }
@@ -42,7 +41,6 @@ class MessageController extends Controller
      */
     public function showChatroom($channel_id)
     {
-
         $profile = Session::get('profile');
         $msg = Message::with('profile')->where('channel_id', '=', $channel_id)
             ->get()->sortBy('created_at');
