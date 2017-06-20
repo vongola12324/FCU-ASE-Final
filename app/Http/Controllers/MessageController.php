@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Channel;
 use App\Message;
+use App\Profile;
 use Illuminate\Http\Request;
+use Session;
 
 class MessageController extends Controller
 {
@@ -15,7 +17,17 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $profile = auth()->user()->profile;
+        if (auth()->check())
+        {
+            $profile = auth()->user()->profile;
+        } else {
+            $profile = Profile::create([
+                'name' => '路人',
+                'created_ip' => request()->ip(),
+            ]);
+        }
+        Session::put('profile', $profile);
+
         $channels = Channel::all();
 
         return view('message.index', compact('channels'));
@@ -28,8 +40,8 @@ class MessageController extends Controller
      */
     public function showChatroom($channel_id)
     {
-        $user = auth()->user();
-        $profile = $user->profile;
+
+        $profile = Session::get('profile');
         $msg = Message::with('profile')->where('channel_id', '=', $channel_id)
             ->get()->sortBy('created_at');
 
@@ -59,7 +71,7 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        $profile = auth()->user()->profile;
+        $profile = Session::get('profile');
         $m = Message::create([
             'profile_id' => $profile->id,
             'channel_id' => $request->input('channel_id'),
