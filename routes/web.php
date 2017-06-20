@@ -82,5 +82,4 @@ Route::group(['prefix' => 'message'], function () {
     Route::put('chat', 'messageController@showChatroom')->name('message.chat');
     Route::get('createChannel', 'messageController@createChannel')->name('message.createChannel');
     Route::put('createChannel', 'messageController@createChannel')->name('message.createChannel');
-
 });
