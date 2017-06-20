@@ -78,4 +78,9 @@ Route::group(['prefix' => 'message'], function () {
     // seng msg
     Route::get('sendmsg', 'messageController@store')->name('message.sendmsg');
     Route::put('sendmsg', 'messageController@store')->name('message.sendmsg');
+    Route::get('chat/{id}', 'messageController@showChatroom')->name('message.chat');
+    Route::put('chat', 'messageController@showChatroom')->name('message.chat');
+    Route::get('createChannel', 'messageController@createChannel')->name('message.createChannel');
+    Route::put('createChannel', 'messageController@createChannel')->name('message.createChannel');
+
 });

@@ -17,25 +17,49 @@ class MessageController extends Controller
     {
         $user = auth()->user();
 
-        // $msg = DB::table('messages')->where('id','=',16)->get();
-        // $msg = DB::table('messages')->get();
+        $channels = DB::table('channels')->get();
 
-        // select users.name,messages.content from users,messages where users.id=messages.profile_id
-        $msg = DB::table('users')
-            ->join('messages', 'users.id', '=', 'messages.profile_id')
-            ->get();
+        return view('message.index', compact('channels'));
+    }
+    /**
+     * Show the view for chatroom according to channel number.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function showChatroom($channel_id)
+    {
+      $user = auth()->user();
 
-        return view('message.index', compact('user', 'msg'));
+      // $msg = DB::table('messages')->where('id','=',16)->get();
+      // $msg = DB::table('messages')->get();
+
+      // select users.name,messages.content from users,messages where users.id=messages.profile_id
+      $msg = DB::table('users')
+          ->join('messages', 'users.id', '=', 'messages.profile_id')
+          ->where('channel_id', '=', $channel_id)
+          ->get();
+
+      return view('message.chat', compact('user', 'msg','channel_id'));
+
     }
 
     /**
-     * Show the form for creating a new resource.
+     * create new channel.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createChannel(Request $request)
     {
-        //
+
+      DB::table('channels')->insert(
+          [
+          'name'    => $request->input('usermsg'),
+          ]
+
+      );
+      $channels = DB::table('channels')->get();
+
+      return view('message.index', compact('channels'));
     }
 
     /**
@@ -51,14 +75,19 @@ class MessageController extends Controller
         DB::table('messages')->insert(
             [
             'profile_id' => $user->id,
-            'channel_id' => '1',
+            'channel_id' => $request->input('channel_id'),
             'content'    => $request->input('usermsg'),
             'created_ip' => $user->last_login_ip,
             ]
 
         );
+        $msg = DB::table('users')
+            ->join('messages', 'users.id', '=', 'messages.profile_id')
+            ->where('channel_id', '=', $request->input('channel_id'))
+            ->get();
+        $channel_id = $request->input('channel_id');
 
-        return redirect()->route('message');
+        return view('message.chat', compact('user', 'msg','channel_id'));
     }
 
     /**

@@ -19,8 +19,7 @@
     <div class="jumbotron">
         <h1 class="display-1">{{ config('app.name') }}</h1>
         <h2 class="display-3">揪咪</h2>
-        <a href="javascript:alert('
-        joy Meet')" class="btn btn-primary btn-lg" style="margin-top: 5vh;" title="Let's GO!!">開始揪！</a>
+        <a href="{{ route('message') }}" class="btn btn-primary btn-lg" style="margin-top: 5vh;" title="Let's GO!!">開始揪！</a>
     </div>
 
 @endsection
