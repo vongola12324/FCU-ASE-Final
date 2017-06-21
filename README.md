@@ -9,10 +9,11 @@ ASE Final Project, Feng Chia University
 - A mailtrap account
 
 ## Contributors
-- vongola12324
-- Heiseikiseki
-- cheehoe073
-- ChenChihHsuan
+- vongola12324 (Hou, Chun-Ching)
+- Heiseikiseki (Chang, Shun-Ming) w/ MagicUmom
+- cheehoe073   (Loh, Chee-Hoe)
+- ChenChihHsuan (Chen, Chih-Hsuan)
+- darren7130 (Chen, Chi-Feng)
 
 ## Deployment
 1. `git clone https://github.com/vongola12324/FCU-ASE-Final`
